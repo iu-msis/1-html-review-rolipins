@@ -32,7 +32,7 @@
   <body>
     <div id="profileApp">
     <header>Exists</header>
-    <h1 class="bg-success"> <p>I am the great {{person.name.first}} {{person.name.last}}</p></h1>
+    <h1 class="bg-success"> <p>I am the great {{person.name.title}} {{person.name.first}} {{person.name.last}}</p></h1>
     <div class="bg-info">
      Thank you for taking the time to read about me! My email is below if you have questions.
     </div>
@@ -44,24 +44,24 @@
     <div class="container">
         <div class="row align-items-start">
           <div class="col">
-            Country: USA
+            Country: {{person.location.country}}
           </div>
           <div class="col">
-            <a href="img/BookManProfile.jpg"><img src="img/BookManProfile.jpg" alt="Charles Profile Pic" width="400"> </a>
+            <img v-bind:src="person.picture.large">
           </div>
           <div class="col">
-            City: {{person.address}} St. Louis
+            Address: {{person.location.street.number}} {{person.location.street.name}} {{person.location.city}}, {{person.location.state}} 
           </div>
         </div>
         <div class="row align-items-center">
           <div class="col">
-            Birthdate: {{person.birthdate}}
+            Birthdate: {{ prettyBirthday }}
           </div>
           <div class="col">
-            https://thumbs.dreamstime.com/b/senior-man-portrait-retired-old-sitting-nursing-home-garden-reading-e-book-45191833.jpg
+           
           </div>
           <div class="col">
-            Age: Gotta learn how to do math here
+            Age: {{person.dob.age}}
         </div>
         <div class="row align-items-end">
           <div class="col">
@@ -76,6 +76,7 @@
         </div>
       </div>
     </div>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
       <script src="js/AboutMe.js"></script>
   </body>
 </html>
